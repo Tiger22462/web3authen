@@ -27,16 +27,25 @@ export default function SignUp() {
       alert("Please fill in all details.");
       return;
     }
+    //mail regex
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!email.match(mailformat)) {
       alert("Please enter a valid email address.");
       return;
     }
+    //phone regex
+    var phoneformat = /^\d{10}$/;
+    if (!phone.match(phoneformat)) {
+      alert("Please enter phone number.");
+      return;
+    }
+    //set value in local storage and use smart contract 
     try {
-      await auth.methods.createUser(username, email, password).send({ from: accounts });
-
-      localStorage.setItem("username", username);
+      await auth.methods.createUser(username, email,password,phone).send({ from: accounts });
+      localStorage.setItem("username",username);
       localStorage.setItem("email", email);
+      localStorage.setItem("password",password);
+      localStorage.setItem("phone",phone);
       navigate("/");
       window.location.reload();
     } catch (e) {
@@ -44,6 +53,7 @@ export default function SignUp() {
     }
   };
 
+  //Everytime load page need to do this
   useEffect(() => {
     loadWeb3();
     loadAccounts();
@@ -51,11 +61,6 @@ export default function SignUp() {
 
   return (
     <div style={rootDiv}>
-      <img
-        src="https://media.geeksforgeeks.org/wp-content/uploads/20210318103632/gfg.png"
-        style={image}
-        alt="geeks"
-      />
       <input
         style={input}
         value={username}
@@ -77,9 +82,17 @@ export default function SignUp() {
         placeholder="Password"
         type="password"
       />
+      <input
+        style={input}
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+        placeholder="Phone Number"
+        type="tel"
+      />
       <button style={button} onClick={signUp}>
         Sign Up
       </button>
+      
     </div>
   );
 }
@@ -114,9 +127,4 @@ const button = {
   border: "none",
 };
 
-const image = {
-  width: 70,
-  height: 70,
-  objectFit: "contain",
-  borderRadius: 70,
-};
+

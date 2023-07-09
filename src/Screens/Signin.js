@@ -49,11 +49,6 @@ export default function SignIn() {
 
   return (
     <div style={rootDiv}>
-      <img
-        src="https://media.geeksforgeeks.org/wp-content/uploads/20210318103632/gfg.png"
-        style={image}
-        alt="geeks"
-      />
       <input
         style={input}
         value={email}
@@ -116,9 +111,3 @@ const button = {
   border: "none",
 };
 
-const image = {
-  width: 70,
-  height: 70,
-  objectFit: "contain",
-  borderRadius: 70,
-};
