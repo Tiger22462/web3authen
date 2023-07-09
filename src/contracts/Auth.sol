@@ -11,6 +11,7 @@ contract Auth{
       string username;
       string email;
       string password;
+      string phone;
   }
 
    // events
@@ -18,16 +19,17 @@ contract Auth{
    event userCreated(
       string username,
       string email,
-      string password
+      string password,
+      string phone
     );
 
-  function createUser(string memory _username,string memory _email,string memory _password ) public {
+  function createUser(string memory _username,string memory _email,string memory _password,string memory _phone) public {
       
         userCount++;
 
-        usersList[_email] = user(_username,_email,_password);
+        usersList[_email] = user(_username,_email,_password,_phone);
       
-        emit userCreated(_username,_email,_password);
+        emit userCreated(_username,_email,_password,_phone);
     }
 
 

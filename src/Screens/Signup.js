@@ -92,6 +92,7 @@ export default function SignUp() {
       <button style={button} onClick={signUp}>
         Sign Up
       </button>
+
       
     </div>
   );
