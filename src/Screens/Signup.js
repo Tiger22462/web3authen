@@ -14,7 +14,7 @@ export default function SignUp() {
   const [accounts, setAccounts] = useState(null);
   const [auth, setAuth] = useState(null);
 
-  //load Data from blockchainData
+  //load Data from blockchainData form auth and accounts metamask 
   const loadAccounts = async () => {
     let { auth, accounts } = await loadBlockchainData();
     setAccounts(accounts);
@@ -34,18 +34,18 @@ export default function SignUp() {
       return;
     }
     //phone regex
-    // var phoneformat = /^\d{10}$/;
-    // if (!phone.match(phoneformat)) {
-    //   alert("Please enter phone number.");
-    //   return;
-    // }
-    // //set value in local storage and use smart contract 
+    var phoneformat = /^\d{10}$/;
+    if (!phone.match(phoneformat)) {
+      alert("Please enter phone number.");
+      return;
+    }
+    //set value in local storage and use smart contract 
     try {
       await auth.methods.createUser(username, email,password,phone).send({ from: accounts });
       localStorage.setItem("username",username);
       localStorage.setItem("email", email);
       localStorage.setItem("password",password);
-      // localStorage.setItem("phone",phone);
+      localStorage.setItem("phone",phone);
       navigate("/");
       window.location.reload();
     } catch (e) {
@@ -54,10 +54,10 @@ export default function SignUp() {
   };
 
   //Everytime load page need to do this
-  useEffect(() => {
-    loadWeb3();
-    loadAccounts();
-  }, []);
+  // useEffect(() => {
+  //   loadWeb3();
+  //   loadAccounts();
+  // }, []);
 
   return (
     <div style={rootDiv}>
@@ -82,13 +82,13 @@ export default function SignUp() {
         placeholder="Password"
         type="password"
       />
-      {/* <input
+      <input
         style={input}
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
         placeholder="Phone Number"
         type="tel"
-      /> */}
+      />
       <button style={button} onClick={signUp}>
         Sign Up
       </button>

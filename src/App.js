@@ -4,6 +4,7 @@ import SignIn from "./Screens/Signin";
 import SignUp from "./Screens/Signup";
 import Home from "./Screens/Home";
 import FirstPage from "./Screens/Firstpage";
+import Metamask from "./Screens/Metamask";
 
 function App() {
   const email = localStorage.getItem("email");
@@ -12,7 +13,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<FirstPage />} />
+          <Route exact path="/" element={<Metamask />} />
+          <Route path="/Firstpage" element={<FirstPage />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Signup" element={<SignUp />} />
           <Route path="/Signin" element={<SignIn />} />

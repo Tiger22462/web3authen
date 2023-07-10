@@ -1,36 +1,18 @@
-import React from "react";
+//import 
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { loadBlockchainData, loadWeb3 } from "../Web3helpers";
 
-export default function FirstPage() {
-    const navigate = useNavigate()
+export default function Firstpage() {
+    
+    
+    //Display Metamask Page
     return (
-    <div>
-      <h1>Quesionaire</h1>
-      <button
-        style={button}
-        onClick={() => { navigate("/Signup");
-        }}>
-        {" "}
-        SIGN UP
-      </button>
-      <button
-        style={button}
-        onClick={() => { navigate("/Signin");
-        }}>
-        {" "}
-        SIGNIN
-      </button>
-    </div>
-  );
+        <div>
+            <h1>already login metamask</h1>
+            
+        </div>
+    );
 }
-const button = {
-  width: 100,
-  padding: 10,
-  borderRadius: 5,
-  margin: 10,
-  cursor: "pointer",
-  fontSize: 17,
-  color: "white",
-  backgroundColor: "#9D27CD",
-  border: "none",
-};
+
+
