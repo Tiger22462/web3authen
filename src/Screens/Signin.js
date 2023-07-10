@@ -39,13 +39,13 @@ export default function SignIn() {
     }
   };
 
-  // React.useEffect(() => {
-  //   loadWeb3();
-  // }, []);
+  React.useEffect(() => {
+    loadWeb3();
+  }, []);
 
-  // React.useEffect(() => {
-  //   loadAccounts();
-  // }, []);
+  React.useEffect(() => {
+    loadAccounts();
+  }, []);
 
   return (
     <div style={rootDiv}>
