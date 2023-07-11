@@ -23,6 +23,8 @@ export default function SignUp() {
 
   //Sign up function
   const signUp = async () => {
+    loadWeb3();
+    loadAccounts();
     if (!username || !email || !password) {
       alert("Please fill in all details.");
       return;

@@ -20,6 +20,12 @@ export default function Metamask() {
             console.log(error.message)
         }
     };
+    const signupConnect = async () => {
+        navigate("/signup")
+    }
+    const signinConnect = async () => {
+        navigate("/signin")
+    }
     //Connect Wallet
     const walletConnect = async () => {
         try {
@@ -36,6 +42,12 @@ export default function Metamask() {
             <h1>Questionnaire</h1>
             <button onClick={walletConnect}>
                 Connect Metamask
+            </button>
+            <button onClick={signupConnect}>
+                signup
+            </button>
+            <button onClick={signinConnect}>
+                signin
             </button>
         </div>
     );
